@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials/testimonials";
 import Booking from "../components/Booking/booking";
 import Contact from "../components/Contact/contact";
 import Footer from "../components/Footer/footer";
-import WhatsAppButton from "../components/WhatsAppButton/whatsappbutton";
+import WhatsAppButton from "../components/WhatsAppButton/Whatsappbutton";
 function Home() {
   return (
     <>
