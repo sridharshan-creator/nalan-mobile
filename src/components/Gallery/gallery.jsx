@@ -1,844 +1,505 @@
-import { useRef } from "react";
-import useIsMobile from "../useIsMobile";
-import { motion, useInView } from "framer-motion";
-import { Sparkles, Play } from "lucide-react";
+import { Images, Video } from "lucide-react";
 
-import backgroundImage from "../../assets/images/IMG-20260803-WA0010.jpg";
-import photo1 from "../../assets/images/IMG-20260803-WA0011.jpg";
-import photo2 from "../../assets/images/IMG-20260803-WA0014.jpg";
+// ========================================
+// IMAGES
+// Replace these dummy filenames later
+// ========================================
 
-import video1 from "../../assets/videos/VID-20260803-WA0030.mp4";
-import video2 from "../../assets/videos/VID-20260803-WA0024.mp4";
+import galleryImage1 from "../../assets/images/img1.jpg";
+import galleryImage2 from "../../assets/images/img2.jpg";
+import galleryImage3 from "../../assets/images/img3.jpg";
+import galleryImage4 from "../../assets/images/img4.jpg";
+import galleryImage5 from "../../assets/images/img5.jpg";
+
+// ========================================
+// VIDEOS
+// Your actual videos
+// ========================================
+
+import galleryVideo1 from "../../assets/videos/gallery1.mp4";
+import galleryVideo2 from "../../assets/videos/gallery2.mp4";
+import galleryVideo3 from "../../assets/videos/gallery3.mp4";
 
 function Gallery() {
-  const isMobile = useIsMobile();
-  const sectionRef = useRef(null);
+  const images = [
+    {
+      src: galleryImage1,
+      alt: "Nalan Catering wedding catering service in Trichy",
+    },
+    {
+      src: galleryImage2,
+      alt: "Traditional Tamil food catering by Nalan Catering",
+    },
+    {
+      src: galleryImage3,
+      alt: "Nalan Catering food arrangement for a special event",
+    },
+    {
+      src: galleryImage4,
+      alt: "Wedding food and catering service by Nalan Catering",
+    },
+    {
+      src: galleryImage5,
+      alt: "Traditional South Indian catering service in Trichy",
+    },
+  ];
 
-  const isInView = useInView(sectionRef, {
-    amount: 0.2,
-    once: true,
-  });
+  const videos = [
+    {
+      src: galleryVideo1,
+      title: "Nalan Catering customer feedback",
+    },
+    {
+      src: galleryVideo2,
+      title: "Nalan Catering event and food service",
+    },
+    {
+      src: galleryVideo3,
+      title: "Nalan Catering celebration and catering service",
+    },
+  ];
 
   return (
     <section
-      ref={sectionRef}
       id="gallery"
       aria-labelledby="gallery-heading"
       className="
         relative
         overflow-hidden
-        min-h-[900px]
-        md:min-h-[950px]
-        bg-black
+        bg-[#dcefe3]
+        py-14
+        sm:py-16
+        md:py-20
       "
     >
+      {/* ========================================
+          SOFT GREEN BACKGROUND
+      ========================================= */}
 
-      {/* =====================================================
-          FULL BACKGROUND IMAGE
-      ====================================================== */}
-
-      <div className="absolute inset-0">
-
-        <img
-          decoding="async"
-          loading="lazy"
-          src={backgroundImage}
-          alt="Nalan Catering wedding and event catering celebration"
-          className="
-            absolute
-            inset-0
-            w-full
-            h-full
-            object-cover
-            object-center
-          "
-        />
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-b
-            from-black/35
-            via-[#062e1b]/30
-            to-black/60
-          "
-        />
-
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-r
-            from-[#063b24]/30
-            via-transparent
-            to-[#063b24]/30
-          "
-        />
-
-      </div>
-
-
-      {/* =====================================================
-          ANIMATED GREEN GLOW — TOP LEFT
-      ====================================================== */}
-
-      <motion.div
-        animate={{
-          x: isInView ? [0, 35, 0] : 0,
-          y: isInView ? [0, -20, 0] : 0,
-          opacity: isInView ? [0.08, 0.16, 0.08] : 0,
-        }}
-        transition={{
-          duration: 8,
-          repeat: isInView && !isMobile ? Infinity : 0,
-          ease: "easeInOut",
-        }}
+      <div
+        aria-hidden="true"
         className="
           absolute
-          -top-48
-          -left-48
-          w-[500px]
-          h-[500px]
-          rounded-full
-          bg-green-400
-          blur-[75px] sm:blur-[140px]
-          pointer-events-none
+          inset-0
+          bg-gradient-to-b
+          from-[#eef9f1]
+          via-[#dcefe3]
+          to-[#cfe6d7]
         "
       />
 
+      {/* Soft green glow */}
 
-      {/* =====================================================
-          ANIMATED GREEN GLOW — BOTTOM RIGHT
-      ====================================================== */}
-
-      <motion.div
-        animate={{
-          x: isInView ? [0, -30, 0] : 0,
-          y: isInView ? [0, 20, 0] : 0,
-          opacity: isInView ? [0.06, 0.13, 0.06] : 0,
-        }}
-        transition={{
-          duration: 9,
-          repeat: isInView && !isMobile ? Infinity : 0,
-          ease: "easeInOut",
-        }}
+      <div
+        aria-hidden="true"
         className="
           absolute
-          -bottom-48
-          -right-48
-          w-[500px]
-          h-[500px]
+          -top-32
+          left-1/2
+          h-72
+          w-[700px]
+          max-w-[100%]
+          -translate-x-1/2
           rounded-full
-          bg-green-700
-          blur-[75px] sm:blur-[140px]
-          pointer-events-none
+          bg-green-300/20
+          blur-3xl
         "
       />
 
-
-      {/* =====================================================
+      {/* ========================================
           MAIN CONTENT
-      ====================================================== */}
+      ========================================= */}
 
       <div
         className="
           relative
           z-10
-          max-w-7xl
           mx-auto
-          min-h-[900px]
-          md:min-h-[950px]
-          px-5
-          md:px-8
+          max-w-7xl
+          px-4
+          sm:px-6
+          lg:px-8
         "
       >
 
+        {/* ========================================
+            HEADER
+        ========================================= */}
 
-        {/* =================================================
-            CENTER TEXT
-        ================================================== */}
+        <header className="mx-auto max-w-3xl text-center">
 
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 100,
-          }}
-          animate={{
-            opacity: isInView ? 1 : 0,
-            y: isInView ? 0 : 100,
-          }}
-          transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            z-30
-            left-1/2
-            -translate-x-1/2
-            top-[24%]
-            md:top-[23%]
-            w-[90%]
-            max-w-3xl
-            text-center
-          "
-        >
-
-          {/* LABEL */}
-
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-3
-              mb-5
-            "
-          >
-
-            <Sparkles
-              size={18}
-              className="text-green-300"
+          <div className="mb-3 flex items-center justify-center gap-2">
+            <Images
+              size={17}
+              aria-hidden="true"
+              className="text-green-700"
             />
 
-            <p
+            <span
               className="
-                text-green-200
-                text-xs
-                md:text-sm
-                font-semibold
+                text-[11px]
+                font-bold
+                uppercase
                 tracking-[3px]
-                drop-shadow-lg
+                text-green-700
+                sm:text-xs
               "
             >
               எங்கள் நினைவுகள்
-            </p>
-
-            <Sparkles
-              size={18}
-              className="text-green-300"
-            />
-
+            </span>
           </div>
-
-
-          {/* MAIN HEADING */}
 
           <h2
             id="gallery-heading"
             className="
-              text-4xl
-              sm:text-5xl
-              md:text-6xl
-              lg:text-7xl
+              text-3xl
               font-bold
-              text-white
-              leading-[1.15]
-              drop-shadow-[0_5px_20px_rgba(0,0,0,0.7)]
+              leading-tight
+              text-green-950
+              sm:text-4xl
+              md:text-5xl
             "
           >
             ஒவ்வொரு விழாவும்
 
-            <br />
-
-            <span className="text-green-300">
+            <span className="block text-green-700">
               ஒரு இனிய நினைவு
             </span>
           </h2>
 
-
-          {/* DESCRIPTION */}
-
           <p
             className="
-              mt-6
-              text-white/85
-              text-sm
-              md:text-base
-              leading-7
-              max-w-2xl
               mx-auto
-              drop-shadow-lg
+              mt-4
+              max-w-2xl
+              text-sm
+              leading-6
+              text-green-950/65
+              sm:text-base
+              sm:leading-7
             "
           >
             நளன் கேட்டரிங் வழங்கும் திருமணம், பிறந்தநாள்,
             குடும்ப விழாக்கள் மற்றும் சிறப்பு நிகழ்வுகளின்
-            அழகான தருணங்களை காணுங்கள். தரமான உணவு,
-            பாரம்பரிய சுவை மற்றும் சிறந்த catering service
+            அழகான தருணங்களை காணுங்கள். பாரம்பரிய சுவை,
+            தரமான உணவு மற்றும் சிறந்த catering service
             மூலம் உங்கள் விழாவை மறக்க முடியாத நினைவாக
             மாற்றுகிறோம்.
           </p>
 
-
-          {/* GREEN DIVIDER */}
-
-          <motion.div
-            initial={{
-              width: 0,
-            }}
-            animate={{
-              width: isInView ? 90 : 0,
-            }}
-            transition={{
-              duration: 0.6,
-              delay: isInView ? 0.25 : 0,
-              ease: "easeOut",
-            }}
+          <div
+            aria-hidden="true"
             className="
-              h-[3px]
-              bg-green-400
-              rounded-full
               mx-auto
-              mt-6
-              shadow-[0_0_15px_rgba(74,222,128,0.5)]
+              mt-5
+              h-1
+              w-14
+              rounded-full
+              bg-green-600
             "
           />
+        </header>
 
 
-          {/* BOTTOM TEXT */}
+        {/* ========================================
+            IMAGE GALLERY
+        ========================================= */}
+
+        <div className="mt-10 sm:mt-12">
+
+          <div className="mb-4 flex items-end justify-between">
+
+            <div>
+
+              <h3
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  text-lg
+                  font-bold
+                  text-green-950
+                  sm:text-xl
+                "
+              >
+                <Images
+                  size={19}
+                  aria-hidden="true"
+                  className="text-green-700"
+                />
+
+                புகைப்படங்கள்
+              </h3>
+
+              <p className="mt-1 text-[11px] text-green-950/55 sm:text-xs">
+                Swipe to explore our catering moments
+              </p>
+
+            </div>
+
+            <span
+              className="
+                hidden
+                rounded-full
+                bg-green-700/10
+                px-3
+                py-1
+                text-[11px]
+                font-medium
+                text-green-800
+                sm:block
+              "
+            >
+              ← Swipe →
+            </span>
+
+          </div>
+
+
+          {/* IMAGE SCROLLER */}
+
+          <div
+            className="
+              flex
+              gap-3
+              overflow-x-auto
+              overscroll-x-contain
+              pb-3
+              snap-x
+              snap-mandatory
+              [-ms-overflow-style:none]
+              [scrollbar-width:none]
+              [&::-webkit-scrollbar]:hidden
+            "
+            aria-label="Nalan Catering photo gallery"
+          >
+
+            {images.map((image, index) => (
+
+              <figure
+                key={image.src}
+                className="
+                  relative
+                  min-w-[47%]
+                  snap-center
+                  overflow-hidden
+                  rounded-xl
+                  border
+                  border-green-900/10
+                  bg-white
+                  shadow-[0_8px_25px_rgba(20,83,45,0.10)]
+                  sm:min-w-[30%]
+                  md:min-w-[24%]
+                  lg:min-w-[22%]
+                "
+              >
+
+                <div className="aspect-[4/3] overflow-hidden">
+
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    width="800"
+                    height="600"
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                    "
+                  />
+
+                </div>
+
+                
+              </figure>
+
+            ))}
+
+          </div>
+
+        </div>
+
+
+        {/* ========================================
+            VIDEO GALLERY
+        ========================================= */}
+
+        <div className="mt-10 sm:mt-12">
+
+          <div className="mb-4 flex items-end justify-between">
+
+            <div>
+
+              <h3
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  text-lg
+                  font-bold
+                  text-green-950
+                  sm:text-xl
+                "
+              >
+
+                <Video
+                  size={19}
+                  aria-hidden="true"
+                  className="text-green-700"
+                />
+
+                வீடியோ தருணங்கள்
+
+              </h3>
+
+              <p className="mt-1 text-[11px] text-green-950/55 sm:text-xs">
+                Watch our catering moments and customer experiences
+              </p>
+
+            </div>
+
+            <span
+              className="
+                hidden
+                rounded-full
+                bg-green-700/10
+                px-3
+                py-1
+                text-[11px]
+                font-medium
+                text-green-800
+                sm:block
+              "
+            >
+              ← Swipe →
+            </span>
+
+          </div>
+
+
+          {/* VIDEO SCROLLER */}
+
+          <div
+            className="
+              flex
+              gap-3
+              overflow-x-auto
+              overscroll-x-contain
+              pb-3
+              snap-x
+              snap-mandatory
+              [-ms-overflow-style:none]
+              [scrollbar-width:none]
+              [&::-webkit-scrollbar]:hidden
+            "
+            aria-label="Nalan Catering video gallery"
+          >
+
+            {videos.map((video) => (
+
+              <article
+                key={video.src}
+                className="
+                  min-w-[47%]
+                  snap-center
+                  overflow-hidden
+                  rounded-xl
+                  border
+                  border-green-900/10
+                  bg-white
+                  shadow-[0_8px_25px_rgba(20,83,45,0.10)]
+                  sm:min-w-[30%]
+                  md:min-w-[28%]
+                  lg:min-w-[25%]
+                "
+              >
+
+                {/* VIDEO */}
+
+                <div className="aspect-square bg-black">
+
+                  <video
+                    src={video.src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    aria-label={video.title}
+                    className="
+                      h-full
+                      w-full
+                      object-cover
+                    "
+                  />
+
+                </div>
+
+
+                {/* VIDEO INFO */}
+
+                <div className="px-3 py-2.5">
+
+                  <h4
+                    className="
+                      text-[11px]
+                      font-bold
+                      leading-4
+                      text-green-950
+                      sm:text-xs
+                    "
+                  >
+                    {video.title}
+                  </h4>
+
+                 
+
+                </div>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </div>
+
+
+        {/* ========================================
+            BOTTOM TEXT
+        ========================================= */}
+
+        <div className="mt-8 text-center">
 
           <p
             className="
-              mt-6
-              text-green-200/80
               text-xs
-              md:text-sm
-              font-medium
+              font-semibold
               tracking-wide
-              drop-shadow-lg
+              text-green-800/70
+              sm:text-sm
             "
           >
             தமிழ் பாரம்பரியம் • சுவையின் பெருமை
           </p>
 
-        </motion.div>
-
-
-        {/* =================================================
-            TOP LEFT IMAGE
-            INCREASED SIZE
-        ================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: -180,
-            rotate: -8,
-          }}
-          animate={{
-            opacity: isInView ? 1 : 0,
-            x: isInView ? 0 : -180,
-            rotate: isInView ? -5 : -8,
-          }}
-          transition={{
-            duration: 0.85,
-            delay: isInView ? 0.15 : 0,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            z-20
-            left-3
-            md:left-8
-            lg:left-14
-            top-[8%]
-
-            w-36
-            sm:w-44
-            md:w-52
-            lg:w-60
-
-            rounded-2xl
-            md:rounded-3xl
-            overflow-hidden
-            border
-            border-green-300/50
-            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
-            bg-black
-            group
-          "
-        >
-
-          <div className="aspect-[4/3] overflow-hidden">
-
-            <img
-              src={photo1}
-              alt="Nalan Catering wedding celebration and catering service"
-              loading="lazy"
-              decoding="async"
-              className="
-                w-full
-                h-full
-                object-cover
-                object-center
-                transition-transform
-                duration-700
-                group-hover:scale-110
-              "
-            />
-
-          </div>
-
-          <div
-            className="
-              absolute
-              inset-x-0
-              bottom-0
-              p-3
-              bg-gradient-to-t
-              from-black/80
-              to-transparent
-            "
-          >
-
-            <p className="text-white text-[10px] md:text-xs font-semibold">
-              இனிய தருணங்கள்
-            </p>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =================================================
-            TOP RIGHT VIDEO
-            INCREASED SIZE
-        ================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: 180,
-            rotate: 8,
-          }}
-          animate={{
-            opacity: isInView ? 1 : 0,
-            x: isInView ? 0 : 180,
-            rotate: isInView ? 5 : 8,
-          }}
-          transition={{
-            duration: 0.85,
-            delay: isInView ? 0.2 : 0,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            z-20
-            right-3
-            md:right-8
-            lg:right-14
-            top-[8%]
-
-            w-36
-            sm:w-44
-            md:w-52
-            lg:w-60
-
-            rounded-2xl
-            md:rounded-3xl
-            overflow-hidden
-            border
-            border-green-300/50
-            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
-            bg-black
-            group
-          "
-        >
-
-          <div className="aspect-[4/3] overflow-hidden">
-
-            {isMobile ? (
-              <img
-                src={photo1}
-                alt="Nalan Catering wedding and event catering"
-                loading="lazy"
-                decoding="async"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  object-center
-                "
-              />
-            ) : (
-              <video
-                src={video1}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Nalan Catering event catering video"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  object-center
-                  transition-transform
-                  duration-700
-                  group-hover:scale-105
-                "
-              />
-            )}
-
-          </div>
-
-
-          {/* PLAY BADGE */}
-
-          <div
-            className="
-              absolute
-              top-3
-              right-3
-              w-8
-              h-8
-              rounded-full
-              bg-green-700/80
-              backdrop-blur-sm md:backdrop-blur-md
-              border
-              border-white/40
-              flex
-              items-center
-              justify-center
-              text-white
-              shadow-lg
-            "
-          >
-
-            <Play
-              size={13}
-              fill="currentColor"
-            />
-
-          </div>
-
-
-          <div
-            className="
-              absolute
-              bottom-0
-              left-0
-              right-0
-              p-3
-              bg-gradient-to-t
-              from-black/80
-              to-transparent
-            "
-          >
-
-            <p className="text-white text-[10px] md:text-xs font-semibold">
-              விழா தருணங்கள்
-            </p>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =================================================
-            BOTTOM LEFT IMAGE
-            INCREASED SIZE
-        ================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: -160,
-            y: 100,
-            rotate: 7,
-          }}
-          animate={{
-            opacity: isInView ? 1 : 0,
-            x: isInView ? 0 : -160,
-            y: isInView ? 0 : 100,
-            rotate: isInView ? 4 : 7,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: isInView ? 0.3 : 0,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            z-20
-            left-3
-            md:left-[10%]
-            lg:left-[14%]
-            bottom-[6%]
-
-            w-36
-            sm:w-44
-            md:w-52
-            lg:w-56
-
-            rounded-2xl
-            md:rounded-3xl
-            overflow-hidden
-            border
-            border-green-300/50
-            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
-            bg-black
-            group
-          "
-        >
-
-          <div className="aspect-[4/3] overflow-hidden">
-
-            <img
-              src={photo2}
-              alt="Traditional Tamil food catering by Nalan Catering"
-              loading="lazy"
-              decoding="async"
-              className="
-                w-full
-                h-full
-                object-cover
-                object-center
-                transition-transform
-                duration-700
-                group-hover:scale-110
-              "
-            />
-
-          </div>
-
-
-          <div
-            className="
-              absolute
-              bottom-0
-              left-0
-              right-0
-              p-3
-              bg-gradient-to-t
-              from-black/80
-              to-transparent
-            "
-          >
-
-            <p className="text-white text-[10px] md:text-xs font-semibold">
-              பாரம்பரிய சுவை
-            </p>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =================================================
-            BOTTOM RIGHT VIDEO
-            INCREASED SIZE
-        ================================================== */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            x: 160,
-            y: 100,
-            rotate: -7,
-          }}
-          animate={{
-            opacity: isInView ? 1 : 0,
-            x: isInView ? 0 : 160,
-            y: isInView ? 0 : 100,
-            rotate: isInView ? -4 : -7,
-          }}
-          transition={{
-            duration: 0.9,
-            delay: isInView ? 0.35 : 0,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="
-            absolute
-            z-20
-            right-3
-            md:right-[10%]
-            lg:right-[14%]
-            bottom-[6%]
-
-            w-36
-            sm:w-44
-            md:w-52
-            lg:w-56
-
-            rounded-2xl
-            md:rounded-3xl
-            overflow-hidden
-            border
-            border-green-300/50
-            shadow-[0_20px_50px_rgba(0,0,0,0.45)]
-            bg-black
-            group
-          "
-        >
-
-          <div className="aspect-[4/3] overflow-hidden">
-
-            {isMobile ? (
-              <img
-                src={photo2}
-                alt="Traditional Tamil food served by Nalan Catering"
-                loading="lazy"
-                decoding="async"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  object-center
-                "
-              />
-            ) : (
-              <video
-                src={video2}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Nalan Catering celebration and food service video"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  object-center
-                  transition-transform
-                  duration-700
-                  group-hover:scale-105
-                "
-              />
-            )}
-
-          </div>
-
-
-          {/* PLAY BADGE */}
-
-          <div
-            className="
-              absolute
-              top-3
-              right-3
-              w-8
-              h-8
-              rounded-full
-              bg-green-700/80
-              backdrop-blur-sm md:backdrop-blur-md
-              border
-              border-white/40
-              flex
-              items-center
-              justify-center
-              text-white
-              shadow-lg
-            "
-          >
-
-            <Play
-              size={13}
-              fill="currentColor"
-            />
-
-          </div>
-
-
-          <div
-            className="
-              absolute
-              bottom-0
-              left-0
-              right-0
-              p-3
-              bg-gradient-to-t
-              from-black/80
-              to-transparent
-            "
-          >
-
-            <p className="text-white text-[10px] md:text-xs font-semibold">
-              கொண்டாட்ட தருணங்கள்
-            </p>
-
-          </div>
-
-        </motion.div>
-
-
-        {/* =================================================
-            DECORATIVE GREEN DOTS
-        ================================================== */}
-
-        <motion.div
-          animate={{
-            opacity: isInView
-              ? [0.3, 0.9, 0.3]
-              : 0,
-            scale: isInView
-              ? [1, 1.3, 1]
-              : 1,
-          }}
-          transition={{
-            duration: 2.5,
-            repeat: isInView && !isMobile ? Infinity : 0,
-          }}
-          className="
-            absolute
-            top-[48%]
-            left-[30%]
-            w-2
-            h-2
-            rounded-full
-            bg-green-300
-            shadow-[0_0_12px_rgba(74,222,128,0.8)]
-            hidden
-            md:block
-          "
-        />
-
-
-        <motion.div
-          animate={{
-            opacity: isInView
-              ? [0.3, 0.9, 0.3]
-              : 0,
-            scale: isInView
-              ? [1, 1.3, 1]
-              : 1,
-          }}
-          transition={{
-            duration: 3,
-            repeat: isInView && !isMobile ? Infinity : 0,
-            delay: 1,
-          }}
-          className="
-            absolute
-            top-[52%]
-            right-[30%]
-            w-2
-            h-2
-            rounded-full
-            bg-green-300
-            shadow-[0_0_12px_rgba(74,222,128,0.8)]
-            hidden
-            md:block
-          "
-        />
+        </div>
 
       </div>
 
 
-      {/* =====================================================
+      {/* ========================================
           BOTTOM GREEN ACCENT
-      ====================================================== */}
+      ========================================= */}
 
       <div
+        aria-hidden="true"
         className="
           absolute
           bottom-0
           left-0
-          right-0
           h-1
+          w-full
           bg-gradient-to-r
           from-green-300
           via-green-600
