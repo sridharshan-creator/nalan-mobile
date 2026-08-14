@@ -1033,16 +1033,16 @@ function Gallery() {
                       <div className="relative aspect-[4/3] overflow-hidden">
 
                         <video
-                          src={video.src}
-                          muted
-                          playsInline
-                          preload={index === 0 ? "metadata" : "none"}
-                          aria-label={video.title}
-                          className="
-                            h-full
-                            w-full
-                            object-cover
-                          "
+  src={video.src}
+  muted
+  playsInline
+  preload="metadata"
+  aria-label={video.title}
+  className="
+    h-full
+    w-full
+    object-cover
+  "
                         />
 
 

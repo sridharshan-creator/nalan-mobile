@@ -59,7 +59,7 @@ function Menu() {
         "எண்ணெய் பொடி",
         "தேங்காய் சட்னி",
         "தக்காளி சட்னி",
-        "ஊளுந்தச் சட்னி",
+        "உளுந்தச் சட்னி",
         "சாம்பார்",
         "பில்டர் காபி",
       ],
@@ -271,8 +271,6 @@ function Menu() {
           className="text-center"
         >
 
-          {/* Decorative symbol */}
-
           <div className="flex items-center justify-center gap-3 mb-3">
 
             <Sparkles
@@ -300,8 +298,6 @@ function Menu() {
 
           </div>
 
-
-          {/* SEO-friendly heading */}
 
           <h2
             id="menu-heading"
@@ -337,8 +333,6 @@ function Menu() {
             வழங்குகிறோம்.
           </p>
 
-
-          {/* Animated green underline */}
 
           <motion.div
             initial={{
@@ -407,11 +401,6 @@ function Menu() {
               aria-selected={activeCategory === index}
               aria-controls={`menu-panel-${index}`}
               onClick={() => setActiveCategory(index)}
-
-              /* =================================================
-                 BUTTON TOUCH / HOVER ANIMATION
-                 Zoom + lift immediately
-              ================================================== */
 
               whileHover={{
                 scale: 1.08,
@@ -531,8 +520,6 @@ function Menu() {
                     text-white
                   "
                 >
-
-                  {/* Green glow */}
 
                   <div
                     className="
@@ -685,23 +672,19 @@ function Menu() {
 
                         <div className="flex items-center gap-3 min-w-0">
 
+                          {/* GREEN BULLET */}
+
                           <span
+                            aria-hidden="true"
                             className="
                               flex-shrink-0
-                              w-8
-                              h-8
+                              w-2.5
+                              h-2.5
                               rounded-full
-                              bg-green-50
-                              text-green-600
-                              flex
-                              items-center
-                              justify-center
-                              text-sm
-                              font-bold
+                              bg-green-500
+                              shadow-[0_0_8px_rgba(34,197,94,0.35)]
                             "
-                          >
-                            {index + 1}
-                          </span>
+                          />
 
 
                           <span
@@ -718,8 +701,6 @@ function Menu() {
                           </span>
 
                         </div>
-
-                        {/* Arrow removed from food items */}
 
                       </motion.div>
 
@@ -844,3 +825,6 @@ function Menu() {
 
 
 export default Menu;
+
+
+
